@@ -31,6 +31,12 @@ class LinkedList:
             n = n.next
             print(n.data)
         #print(n.data)
+    
+    def printList(self):
+        temp = self.head
+        while temp:
+            print(temp.data)
+            temp = temp.next
 
 
 list = LinkedList(0)
@@ -39,5 +45,6 @@ list.insert(3)
 list.insert(4)
 list.insert(11)
 list.print()
+list.printList()
 
 
