@@ -65,11 +65,6 @@ class LinkedList:
         temp1.next = temp2.next
         temp2 = None
 
-        
-        
-            
-
-
     def append(self, data):
         temp = self.head
         last = temp
@@ -82,6 +77,26 @@ class LinkedList:
             last.next = n
         else:
             self.head = n
+
+    def reverse(self):
+
+        # at the first node
+        # set  first node next to null
+        temp1 = self.head
+        temp2 = temp1.next
+        temp1.next = None
+        while temp2:
+            next = temp2.next
+            temp2.next = temp1
+            temp1 = temp2
+            temp2 = next
+        self.head = temp1
+            
+            
+    
+            
+
+
 
     def length(self):
         cnt = 0
@@ -143,5 +158,7 @@ list3.insertAt(7, 7)
 list3.printList()
 list3.delete(3)
 list3.delete(3)
+list3.printList()
+list3.reverse()
 list3.printList()
 
