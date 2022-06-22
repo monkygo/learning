@@ -1,5 +1,5 @@
-from platform import node
-from tkinter.messagebox import NO
+#from platform import node
+#from tkinter.messagebox import NO
 
 
 class Node:
