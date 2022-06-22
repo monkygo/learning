@@ -27,10 +27,6 @@ class LinkedList:
     def insertAt(self, data, i):
         n = Node(data)
 
-        if self.head == None and i == 0:
-            self.head = n
-            return
-        
         if i == 0:
             n.next = self.head
             self.head = n
@@ -53,6 +49,27 @@ class LinkedList:
             n.next = node.next
             node.next = n
     
+    def delete(self, n):
+        temp1 = self.head
+        if n == 1:
+            self.head = temp1.next
+            temp1 = None
+            return
+        
+        cnt = 0
+        while cnt < n - 2:
+            cnt += 1
+            temp1 = temp1.next
+
+        temp2 = temp1.next
+        temp1.next = temp2.next
+        temp2 = None
+
+        
+        
+            
+
+
     def append(self, data):
         temp = self.head
         last = temp
@@ -124,5 +141,7 @@ list3.insertAt(7, 7)
 #list3.insertAt(5, 3)
 #print("missing head:", list3.head)
 list3.printList()
-
+list3.delete(3)
+list3.delete(3)
+list3.printList()
 
