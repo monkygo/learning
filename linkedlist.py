@@ -16,16 +16,24 @@ class LinkedList:
         # insert at the head
         if self.head == None:
             self.head = Node(data)
+            return self.head
         else:
             temp = self.head
             n = Node(data)
             n.next = temp
             self.head = n
+            return n
+    
+    def insertAfter(self, node, data):
+        if node:
+            n = Node(data)
+            n.next = node.next
+            node.next = n
 
     def print(self):
         # loop through list
         n =  self.head
-        print(n.data)
+        print(n.data, end=" ")
         while n.next != None:
             #print(n.data)
             n = n.next
@@ -35,16 +43,17 @@ class LinkedList:
     def printList(self):
         temp = self.head
         while temp:
-            print(temp.data)
+            print(temp.data, end=" ")
             temp = temp.next
 
 
 list = LinkedList(0)
 list.insert(2)
 list.insert(3)
-list.insert(4)
+n4 = list.insert(4)
 list.insert(11)
-list.print()
+list.insertAfter(n4, 5)
+#list.print()
 list.printList()
 
 
