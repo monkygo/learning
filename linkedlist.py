@@ -91,13 +91,17 @@ class LinkedList:
             temp1 = temp2
             temp2 = next
         self.head = temp1
-            
-            
-    
-            
 
-
-
+    def reverse2(self):
+        curr = self.head
+        prev = None
+        while curr:
+            next = curr.next
+            curr.next = prev
+            prev = curr
+            curr = next
+        self.head = prev
+            
     def length(self):
         cnt = 0
         temp = self.head
@@ -159,6 +163,6 @@ list3.printList()
 list3.delete(3)
 list3.delete(3)
 list3.printList()
-list3.reverse()
+list3.reverse2()
 list3.printList()
 
