@@ -79,20 +79,6 @@ class LinkedList:
             self.head = n
 
     def reverse(self):
-
-        # at the first node
-        # set  first node next to null
-        temp1 = self.head
-        temp2 = temp1.next
-        temp1.next = None
-        while temp2:
-            next = temp2.next
-            temp2.next = temp1
-            temp1 = temp2
-            temp2 = next
-        self.head = temp1
-
-    def reverse2(self):
         curr = self.head
         prev = None
         while curr:
@@ -128,6 +114,20 @@ class LinkedList:
             temp = temp.next
         print("")
 
+
+list = LinkedList()
+list.reverse()
+list.printList()
+list.insert(1)
+list.reverse()
+list.insert(2)
+list.insert(3)
+list.reverse()
+list.printList()
+list.reverse()
+list.printList()
+
+""""
 
 list = LinkedList(0)
 list.insert(2)
@@ -166,3 +166,6 @@ list3.printList()
 list3.reverse2()
 list3.printList()
 
+
+
+"""
