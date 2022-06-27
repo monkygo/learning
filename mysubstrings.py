@@ -11,6 +11,9 @@ def getAllSubstrings(s):
 def pairAnagramCount(list):
     cnt = 0
     for n in list.values():
+        # nC2 = n! / r! (n - r)! =>
+        # n (n - 1) (n - 2)! / 2! (n - 2)! =>
+        # n (n - 1) / 2
         calc = (n * (n - 1)) // 2
         cnt += calc
     return cnt
