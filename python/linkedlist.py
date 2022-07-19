@@ -50,8 +50,9 @@ class LinkedList:
             node.next = n
     
     def delete(self, n):
+        # position starts at 0
         temp1 = self.head
-        if n == 1:
+        if n == 0:
             self.head = temp1.next
             temp1 = None
             return
@@ -114,6 +115,56 @@ class LinkedList:
             temp = temp.next
         print("")
 
+class DoublyNode():
+    def __init__(self, data):
+        self.data = data
+        self.prev = None
+        self.next = None
+
+class DoublyLinkedList():
+    def __init__(self, data):
+        self.head = None
+        if data != None:
+            self.insert(data)
+    
+    def insert(self, data):
+        # insert at the head of the linked list
+        temp = self.head
+        n = DoublyNode(data)
+        n.next = temp
+        self.head = n
+
+    def delete(self, n):
+        # position starts at 0
+        curr = self.head
+
+        if curr == None:
+            return -1
+
+        next = curr.next
+        if n == 0:
+           self.head = next
+           curr = None
+           return 
+
+        cnt = 1
+        while next:
+            if n == cnt:
+                curr.next = next.next
+                next = None
+                break
+
+            curr = next
+            next = next.next
+            cnt += 1
+
+    def print(self):
+        curr = self.head
+        while curr:
+            print(curr.data, end=" ")
+            curr = curr.next
+        print()
+        
 
 list = LinkedList()
 list.reverse()
@@ -126,6 +177,15 @@ list.reverse()
 list.printList()
 list.reverse()
 list.printList()
+
+dlist = DoublyLinkedList(1)
+dlist.insert(2)
+dlist.insert(3)
+dlist.insert(4)
+dlist.insert(5)
+dlist.print()
+dlist.delete(5)
+dlist.print()
 
 """"
 
