@@ -124,6 +124,7 @@ class DoublyNode():
 class DoublyLinkedList():
     def __init__(self, data):
         self.head = None
+        self.tail = None
         if data != None:
             self.insert(data)
     
@@ -132,7 +133,15 @@ class DoublyLinkedList():
         temp = self.head
         n = DoublyNode(data)
         n.next = temp
+        if temp:
+            temp.prev = n
         self.head = n
+        
+        curr = n
+        while curr:
+            prev = curr
+            curr = curr.next
+        self.tail = prev
 
     def delete(self, n):
         # position starts at 0
@@ -143,15 +152,20 @@ class DoublyLinkedList():
 
         next = curr.next
         if n == 0:
-           self.head = next
-           curr = None
-           return 
+            next.prev = None
+            self.head = next
+            if next.next == None:
+                self.tail = next
+            return 
 
         cnt = 1
         while next:
             if n == cnt:
                 curr.next = next.next
-                next = None
+                if next.next:
+                    next.next.prev = curr
+                if next.next == None:
+                    self.tail = curr
                 break
 
             curr = next
@@ -163,6 +177,13 @@ class DoublyLinkedList():
         while curr:
             print(curr.data, end=" ")
             curr = curr.next
+        print()
+    
+    def printReverse(self):
+        curr = self.tail
+        while curr:
+            print(curr.data, end=" ")
+            curr = curr.prev
         print()
         
 
@@ -184,8 +205,9 @@ dlist.insert(3)
 dlist.insert(4)
 dlist.insert(5)
 dlist.print()
-dlist.delete(5)
+dlist.delete(3)
 dlist.print()
+dlist.printReverse()
 
 """"
 
