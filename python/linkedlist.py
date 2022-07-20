@@ -8,7 +8,7 @@ class Node:
         self.next = None
 
 class LinkedList:
-    def __init__(self, data = None):
+    def __init__(self, data=None):
         self.head = None
         if data != None:
             self.insert(data)
@@ -122,7 +122,7 @@ class DoublyNode():
         self.next = None
 
 class DoublyLinkedList():
-    def __init__(self, data):
+    def __init__(self, data=None):
         self.head = None
         self.tail = None
         if data != None:
@@ -261,6 +261,18 @@ dlist2.insertAtTail(6)
 dlist2.print()
 dlist2.printReverse()
 
+dlist3 = DoublyLinkedList(1)
+dlist3.insertAtTail(2)
+dlist3.print()
+dlist3.printReverse()
+
+dlist4 = DoublyLinkedList(1)
+dlist4.print()
+dlist4.printReverse()
+
+dlist5 = DoublyLinkedList()
+dlist5.print()
+dlist5.printReverse()
 """"
 
 list = LinkedList(0)
