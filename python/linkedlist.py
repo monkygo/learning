@@ -130,19 +130,17 @@ class DoublyLinkedList():
     
     def insert(self, data):
         # insert at the head of the linked list
-        temp = self.head
+        curr = self.head
         n = DoublyNode(data)
-        n.next = temp
-        if temp:
-            temp.prev = n
-        self.head = n
-        
-        curr = n
-        while curr:
-            prev = curr
-            curr = curr.next
-        self.tail = prev
+        if curr == None:
+            # no node exist
+            self.head = n
+            self.tail = n
+            return n
 
+        self.head = n
+        n.next = curr
+        curr.prev = n
 
     def insertAtTail(self, data):
         # case no element exist
