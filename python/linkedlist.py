@@ -143,6 +143,48 @@ class DoublyLinkedList():
             curr = curr.next
         self.tail = prev
 
+
+    def insertAtTail(self, data):
+        # case no element exist
+        # case only 1 element exists
+        # case only 2 element exist
+        n = DoublyNode(data)
+        curr = self.tail
+        if curr == None:
+            self.head = n
+            self.tail = n
+            return n
+        # need to walk through nodes
+        # to find out if only an node exists
+        
+        # need to also worry about head
+
+        """
+        temp = curr.prev
+        if temp == None:
+            # only an element exists
+            curr.next = n
+            n.prev = curr
+            self.tail = n
+            # don't need to worry about updating the head
+            return
+        """
+        # at least two nodes exist
+        # curr is N1
+        # new N 
+        # N2<-N1<-tail
+        # N2<-N1<-n<-tail
+        curr.next = n
+        n.prev = curr
+        self.tail = n
+
+        # N1->N2->N3->null
+        # N1<-N2<-N3<-tail
+        # if inserting element at tail end,
+        # move element N3 and put the new element,
+        # at prev N3 location.
+
+
     def delete(self, n):
         # position starts at 0
         curr = self.head
@@ -208,6 +250,16 @@ dlist.print()
 dlist.delete(3)
 dlist.print()
 dlist.printReverse()
+
+
+dlist2 = DoublyLinkedList(1)
+dlist2.insertAtTail(2)
+dlist2.insertAtTail(3)
+dlist2.insertAtTail(4)
+dlist2.insertAtTail(5)
+dlist2.insertAtTail(6)
+dlist2.print()
+dlist2.printReverse()
 
 """"
 
