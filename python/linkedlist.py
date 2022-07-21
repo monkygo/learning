@@ -1,12 +1,13 @@
 #from platform import node
 #from tkinter.messagebox import NO
 
-
+# =================================================
 class Node:
     def __init__(self, data):
         self.data = data
         self.next = None
 
+# =================================================
 class LinkedList:
     def __init__(self, data=None):
         self.head = None
@@ -115,12 +116,14 @@ class LinkedList:
             temp = temp.next
         print("")
 
+# =================================================
 class DoublyNode():
     def __init__(self, data):
         self.data = data
         self.prev = None
         self.next = None
 
+# =================================================
 class DoublyLinkedList():
     def __init__(self, data=None):
         self.head = None
