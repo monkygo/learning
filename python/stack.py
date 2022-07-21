@@ -34,3 +34,15 @@ print("pop: ", s.pop().data)
 print("top: ", s.top().data)
 
         
+# reverse a string
+stx = Stack()
+s1 = "Hello"
+for x in s1:
+    stx.push(x)
+stx.print()
+arr = []
+
+while stx.isEmpty() == False:
+    arr.append(stx.pop().data)
+s2 = "".join(arr)
+print("s2:", s2)
