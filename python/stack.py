@@ -1,32 +1,24 @@
-from linkedlist import DoublyLinkedList
+from linkedlist import LinkedList
 
 class Stack():
     def __init__(self):
-        self.list = DoublyLinkedList()
+        self.list = LinkedList()
 
     def push(self, x):
-        self.list.insertAtTail(x)
+        self.list.insert(x)
 
     def pop(self):
-        curr = self.list.head
-
-        if curr == None:
+        n = self.list.head
+        if n == None:
             return
-
-        cnt = -1
-        while curr:
-            curr = curr.next
-            cnt += 1
-
-        n = self.list.tail
-        self.list.delete(cnt)
+        self.list.delete(0)
         return n
     
     def top(self):
-        return self.list.tail
+        return self.list.head
 
     def isEmpty(self):
-        return self.list.tail == None
+        return self.list.head == None
 
     def print(self):
         self.list.print()
