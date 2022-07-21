@@ -46,3 +46,24 @@ while stx.isEmpty() == False:
     arr.append(stx.pop().data)
 s2 = "".join(arr)
 print("s2:", s2)
+
+j = len(s1) - 1
+i = 0
+sArr1 = list(s1)
+while j > i:
+    temp = sArr1[i]
+    sArr1[i] = sArr1[j]
+    sArr1[j] = temp
+    i += 1
+    j -= 1
+print("sArr1:", sArr1)
+print("sArr1 string:", "".join(sArr1))
+
+def reverseStr(str, buildStr, start):
+    if start >= len(str) - 1:
+        return str[start]
+    s = str[start]
+    start += 1
+    return reverseStr(str, buildStr, start) + s
+
+print("revStr: ", reverseStr("Hello", "", 0))
