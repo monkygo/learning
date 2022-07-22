@@ -101,6 +101,9 @@ class LinkedList:
     def print(self):
         # loop through list
         n =  self.head
+        if n == None:
+            print("")
+            return
         print(n.data, end=" ")
         while n.next != None:
             #print(n.data)
@@ -228,7 +231,8 @@ class DoublyLinkedList():
             print(curr.data, end=" ")
             curr = curr.prev
         print()
-        
+# =================================================
+# =================================================        
 
 list = LinkedList()
 list.reverse()

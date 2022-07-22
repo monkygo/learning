@@ -1,5 +1,6 @@
 from linkedlist import LinkedList
 
+# =================================================
 class Stack():
     def __init__(self):
         self.list = LinkedList()
@@ -22,6 +23,35 @@ class Stack():
 
     def print(self):
         self.list.print()
+
+# =================================================
+def reverseStr(str, buildStr, start):
+    if start >= len(str) - 1:
+        return str[start]
+    s = str[start]
+    start += 1
+    return reverseStr(str, buildStr, start) + s
+
+# =================================================
+# check for balanced parentheses, { [ ( ) ] }
+def checkForBalancedParentheses(str):
+    stack = Stack()
+    openingingParantheses = {"{":"}", "[":"]", "(":")"}
+    closingParantheses = {"}":"{", "]":"[", ")":"("}
+
+    for x in str:
+        if x in openingingParantheses:
+            stack.push(x)
+        elif x in closingParantheses:
+            if stack.isEmpty() == True or closingParantheses[x] != stack.top().data:
+                return False
+            else:
+                lastOpenParanthesis = stack.pop().data
+ 
+    return stack.isEmpty()
+
+# =================================================
+# =================================================
 
 s = Stack()
 print("isEmpty: ", s.isEmpty())
@@ -59,11 +89,13 @@ while j > i:
 print("sArr1:", sArr1)
 print("sArr1 string:", "".join(sArr1))
 
-def reverseStr(str, buildStr, start):
-    if start >= len(str) - 1:
-        return str[start]
-    s = str[start]
-    start += 1
-    return reverseStr(str, buildStr, start) + s
-
 print("revStr: ", reverseStr("Hello", "", 0))
+
+str = "{ [ ( ) ] }"
+print("check for balanced parantheses:", checkForBalancedParentheses(str))
+str = "{ [ ( ) ] } )"
+print("check for balanced parantheses:", checkForBalancedParentheses(str))
+str = "{ [zdf ( ) ]basdf } a"
+print("check for balanced parantheses:", checkForBalancedParentheses(str))
+str = "{ [ ) ( ) ] } )"
+print("check for balanced parantheses:", checkForBalancedParentheses(str))
