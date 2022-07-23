@@ -51,7 +51,47 @@ def checkForBalancedParentheses(str):
     return stack.isEmpty()
 
 # =================================================
+# Infix to Postfix
+def infixToPostfix(exp):
+    # from left to right, items add to res string or 
+    # add to operator to stack.
+    # lower precedence operator encountered compare to the top of stack,
+    # will call pop to the stacks until empty, then add lower precedence
+    # operator to the stack.
+    operators = {"(":10, ")":10, "*":5, "/":5, "+":4, "-":4}
+    stack = Stack()
+    res = ""
+    exp = exp.split(" ")
+    for x in exp:
+        if x in operators:
+            if stack.isEmpty() == True or operators[stack.top().data] <= operators[x]:
+                stack.push(x)
+            # elif operators[x] == 10:
+            
+            else:
+                while stack.isEmpty() == False:
+                    val = stack.pop().data
+                    if val not in {"(", ")"}:
+                        res += val + ","
+                stack.push(x)
+        else:
+            res += x + ","
+    while stack.isEmpty() == False:
+        val = stack.pop().data
+        if val not in {"(", ")"}:
+            res += val + ","
+    return res.rstrip(",")
+
+
 # =================================================
+# =================================================
+
+str = "A + B * C - D * E"
+print("infixToPostfix:", infixToPostfix(str))
+
+str = "( A + B ) * C - D * E"
+print("infixToPostfix:", infixToPostfix(str))
+
 
 s = Stack()
 print("isEmpty: ", s.isEmpty())
@@ -99,3 +139,4 @@ str = "{ [zdf ( ) ]basdf } a"
 print("check for balanced parantheses:", checkForBalancedParentheses(str))
 str = "{ [ ) ( ) ] } )"
 print("check for balanced parantheses:", checkForBalancedParentheses(str))
+
