@@ -1,3 +1,4 @@
+from cmath import isclose
 from linkedlist import LinkedList
 
 # =================================================
@@ -59,21 +60,38 @@ def infixToPostfix(exp):
     # will call pop to the stacks until empty, then add lower precedence
     # operator to the stack.
     operators = {"(":10, ")":10, "*":5, "/":5, "+":4, "-":4}
+    parantheses = {"(":10, ")":10}
+    isOpeningParanthesis = "("
+    isClosingParanthesis = ")"
     stack = Stack()
     res = ""
     exp = exp.split(" ")
     for x in exp:
-        if x in operators:
+        if x == isOpeningParanthesis:
+            stack.push(x)
+        elif x == isClosingParanthesis:
+            while (stack.isEmpty() == False and 
+                   stack.top().data != isOpeningParanthesis):
+                res += stack.pop().data + ","
+            stack.pop()
+        elif x in operators:
             if stack.isEmpty() == True or operators[stack.top().data] <= operators[x]:
                 stack.push(x)
-            # elif operators[x] == 10:
-            
             else:
-                while stack.isEmpty() == False:
-                    val = stack.pop().data
-                    if val not in {"(", ")"}:
-                        res += val + ","
+                while stack.isEmpty() == False and stack.top().data != isOpeningParanthesis:
+                    res += stack.pop().data + ","
                 stack.push(x)
+        # elif x in parantheses:
+        #     isOpening = "("
+        #     isClosing = ")"
+        #     if x == isOpening:
+        #         stack.push(x)
+        #     else:
+        #         while stack.isEmpty() == False:
+        #             op = stack.pop().data
+        #             if op == isClosing:
+        #                 break
+        #             res += op + ","
         else:
             res += x + ","
     while stack.isEmpty() == False:
@@ -90,6 +108,9 @@ str = "A + B * C - D * E"
 print("infixToPostfix:", infixToPostfix(str))
 
 str = "( A + B ) * C - D * E"
+print("infixToPostfix:", infixToPostfix(str))
+
+str = "( ( A + B ) * C - D ) * E"
 print("infixToPostfix:", infixToPostfix(str))
 
 
